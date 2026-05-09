@@ -16,7 +16,7 @@ type Training struct {
 	TrainingType string
 	Duration     time.Duration
 	personaldata.Personal
-	// TODO: добавить поля
+	// TODO: реализовать функцию
 }
 
 func (t *Training) Parse(datastring string) (err error) {
