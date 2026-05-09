@@ -15,7 +15,7 @@ type DaySteps struct {
 	Steps    int
 	Duration time.Duration
 	personaldata.Personal
-	// TODO: добавить поля
+	// TODO: реализовать функцию
 }
 
 func (ds *DaySteps) Parse(datastring string) (err error) {
@@ -28,10 +28,16 @@ func (ds *DaySteps) Parse(datastring string) (err error) {
 	if err != nil {
 		return err
 	}
+	if steps <= 0 {
+	return errors.New("неверное количество шагов")
+	}
 
 	duration, err := time.ParseDuration(parts[1])
 	if err != nil {
 		return err
+	}
+	if duration <= 0 {
+		return errors.New("invalid duration")
 	}
 
 	ds.Steps = steps
@@ -49,7 +55,7 @@ func (ds DaySteps) ActionInfo() (string, error) {
 	}
 
 	info := fmt.Sprintf(
-		"Количество шагов: %d.\nДистанция составила %.2f км.\nВы сожгли %.2f ккал.",
+		"Количество шагов: %d.\nДистанция составила %.2f км.\nВы сожгли %.2f ккал.\n",
 		ds.Steps,
 		distance,
 		calories,
