@@ -16,9 +16,11 @@ type Training struct {
 	TrainingType string
 	Duration     time.Duration
 	personaldata.Personal
+	// TODO: добавить поля
 }
 
 func (t *Training) Parse(datastring string) error {
+	// TODO: добавить поля
 	datastring = strings.TrimSpace(datastring)
 
 	parts := strings.Split(datastring, ",")
@@ -52,6 +54,7 @@ func (t *Training) Parse(datastring string) error {
 }
 
 func (t Training) ActionInfo() (string, error) {
+	// TODO: добавить поля
 	var calories float64
 	var err error
 
